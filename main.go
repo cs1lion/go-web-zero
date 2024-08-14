@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import "net/http"
+
+//import "fmt"
 
 func main() {
-	fmt.Println("hello vscode!")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello vscode"))
+	})
+
+	http.ListenAndServe("localhost:8080", nil)
 }
